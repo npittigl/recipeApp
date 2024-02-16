@@ -1,5 +1,6 @@
 import './App.css';
-import Header from './Header.js'
+import Header from './components/Header.js'
+import Form from './components/Form.js'
 
 function App() {
 
@@ -30,55 +31,21 @@ function App() {
     console.log(data);
   }
 
-  getApiData();
+  // getApiData();
 
   return (
     <div className="App">
       <header>
         <Header />
       </header>
+
+      <Form />
     </div>
   );
 }
 
 export default App;
 
-// Components:
-
-  // 1. Header
-  // 2. Form - interactive form with questions for user to answer
-  // 3. Recipe Cards
-  // 4. Button??
-  // 5. optionsArray
-  // 6. DisplayResults - api call separate component from App.js??
-  // 7. Error Message
-  // 8. Footer
-
-//   app.getRecipes = (query1, query2) => {
-//     const url = new URL(app.apiUrl);
-//     // add search parameters to url
-//     url.search = new URLSearchParams({
-//         apiKey: app.apiKey,
-//         excludeCuisine: query1,
-//         excludeIngredients: query2,
-//         type: [
-//             'lunch',
-//             'main course',
-//             'main dish',
-//             'dinner'
-//         ],
-//         addRecipeInformation: true,
-//         sort: 'random',
-//         number: 3
-//     })
-//     fetch(url)
-//         .then(response => {
-//             return response.json();
-//         })
-//         .then(jsonResult => {
-//             app.displayRecipe(jsonResult);
-//         });
-// }
 
 // Define Global Variables:
 // app.apiKey = 'c8f1c1da6fe84ef6b510afbd3ad28f27';
@@ -88,21 +55,3 @@ export default App;
 // app.apiUrl = "https://proxy.junocollege.com/https://api.spoonacular.com/recipes/complexSearch";
 // // api endpoint to search if ingredient exists
 // app.apiUrlIng = "https://api.spoonacular.com/food/ingredients/search";
-
-// // global array of cuisines already excluded from user choices
-// app.excludedCuisines = [
-//     'African',
-//     'British',
-//     'Cajun',
-//     'Caribbean',
-//     'Eastern European',
-//     'European',
-//     'German',
-//     'Irish',
-//     'Jewish',
-//     'Latin American',
-//     'Mediterranean',
-//     'Nordic',
-//     'Southern',
-//     'Vietnamese'
-// ];
