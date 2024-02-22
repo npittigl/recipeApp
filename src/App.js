@@ -1,6 +1,7 @@
 import './App.css';
 import Header from './components/Header.js'
 import Form from './components/Form.js'
+import Footer from './components/Footer.js'
 
 function App() {
 
@@ -31,15 +32,15 @@ function App() {
     console.log(data);
   }
 
-  // getApiData();
+  getApiData();
 
   return (
     <div className="App">
-      <header>
-        <Header />
-      </header>
-
-      <Form />
+      <Header />
+      <main>
+        <Form />
+      </main>
+      <Footer />
     </div>
   );
 }
