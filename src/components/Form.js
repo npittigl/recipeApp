@@ -3,12 +3,12 @@ import excludeCuisinesArray from "./excludedCuisinesArray";
 import { useState } from 'react';
 
 // Function to display form
-function Form() {
+function Form({ submitForm }) {
 
     // store user's selections in state, which is added to an already existing array of excluded cuisines
     const [userSelection, setUserSelection] = useState(excludeCuisinesArray);
 
-    // event listener function
+    // event listener for selected cuisines
     const handleChange = (event) => {
         // store target element (checkbox) into variable
         const addCuisine = event.target.value;
@@ -30,13 +30,28 @@ function Form() {
         };
     }
 
-    // console.log(userSelection);
+    // event handler for form submission
+    const handleSubmit = (event) => {
+        // prevent page reload on submit
+        event.preventDefault();
+
+        // if at least one selection is made, form can be submitted
+        if(userSelection.length !== 14) {
+            submitForm(userSelection);
+        }
+    }
 
     return (
-        <form>
+        <form
+            name="form"
+            onSubmit={
+                (event) => {
+                    handleSubmit(event);
+                }
+            }
+        >
             <fieldset>
                 <legend>Pick the cuisines you'd like to EXCLUDE from your recipe search (minimum: 1):</legend>
-
                 {
                     cuisineOptionsArray.map((option, index) => {
                         return (
@@ -47,18 +62,15 @@ function Form() {
                         )
                     })
                 }
-                
             </fieldset>
 
-            <label htmlFor="inputText">Ingredients to exclude (Optional; Maximum: 5):</label>
-
+            {/* <label htmlFor="inputText">Ingredients to exclude (Optional; Maximum: 5):</label>
             <input type="text" name="inputText" placeholder="ex. egg, beef, tofu"></input>
 
             <button className="add">Add to List</button>
+            <button className="remove">Clear List</button> */}
 
-            <button className="remove">Clear List</button>
-
-            <ul className="ingredientsList"></ul>
+            {/* <ul className="ingredientsList"></ul> */}
 
             <button type="submit" className="submitBtn">Submit</button>
         </form>

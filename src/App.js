@@ -6,14 +6,14 @@ import Footer from './components/Footer.js'
 function App() {
 
   // function to make api calls
-  const getApiData = async () => {
+  const getApiData = async (query1) => {
     // stored url endpoint for recipes API
     const urlRecipes = new URL('https://proxy.junocollege.com/https://api.spoonacular.com/recipes/complexSearch');
 
     // parameters for recipes API
     urlRecipes.search = new URLSearchParams({
       apiKey: 'c8f1c1da6fe84ef6b510afbd3ad28f27',
-      // excludeCuisine: query1,
+      excludeCuisine: query1,
       // excludeIngredients: query2,
       type: [
           'lunch',
@@ -26,19 +26,21 @@ function App() {
       number: 3
     })
 
+    // console.log(query1);
+
     const recipes = await fetch(urlRecipes);
 
     const data = await recipes.json();
     console.log(data);
   }
 
-  getApiData();
-
   return (
     <div className="App">
       <Header />
       <main>
-        <Form />
+        <Form 
+          submitForm={getApiData}
+        />
       </main>
       <Footer />
     </div>
